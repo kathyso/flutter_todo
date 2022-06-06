@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_todo/ui/home/home_screen.dart';
+import 'package:flutter_todo/ui/posts/posts_screen.dart';
 import 'package:flutter_todo/utils/navigation_bar_item.dart';
 import 'package:flutter_todo/widgets/bottom_navigation_bar_widget.dart';
 
@@ -61,9 +62,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   static const List<Widget> _pages = <Widget>[
     HomeScreen(),
-    Icon(
-      Icons.newspaper,
-      size: 150,
-    ),
+    PostsScreen(),
   ];
 }
