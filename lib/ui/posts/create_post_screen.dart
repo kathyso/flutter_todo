@@ -129,6 +129,7 @@ class _CreatePostWidgetState extends State<CreatePostWidget> {
   void _onSubmitPressed(BuildContext context) {
     // Validate returns true if the form is valid, or false otherwise.
     if (_formKey.currentState!.validate()) {
+      // add event to the bloc to request to create a post
       context.read<CreatePostBloc>().add(CreatePostRequested(
           title: titleEditingController.text,
           body: descriptionEditingController.text));
