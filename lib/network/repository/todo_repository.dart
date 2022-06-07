@@ -30,12 +30,9 @@ class TodoRepository {
     }
   }
 
-  Future<Todo> createTodo(
-      {required int userId,
-      required String title,
-      required bool completed}) async {
+  Future<Todo> createTodo({required int userId, required String title}) async {
     try {
-      final todo = Todo(userId: userId, title: title, completed: completed);
+      final todo = Todo(userId: userId, title: title, completed: false);
       final data = todo.toJson();
       final result = await _client.createTodo(data: data);
       return result;
