@@ -39,4 +39,16 @@ class PostClient {
       rethrow;
     }
   }
+
+  Future<Post> createPost({required Map<String, dynamic> data}) async {
+    final url = '$_baseUrl/posts';
+
+    try {
+      final response = await _api.request(HttpMethod.post, url, data: data);
+      final post = Post.fromJson(response.data);
+      return post;
+    } catch (e) {
+      rethrow;
+    }
+  }
 }

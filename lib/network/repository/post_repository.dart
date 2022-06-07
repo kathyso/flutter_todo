@@ -29,4 +29,18 @@ class PostRepository {
       return Future.error(e);
     }
   }
+
+  Future<Post> createPost(
+      {required int userId,
+      required String title,
+      required String body}) async {
+    try {
+      final post = Post(userId: userId, title: title, body: body);
+      final data = post.toJson();
+      final result = await _client.createPost(data: data);
+      return result;
+    } catch (e) {
+      return Future.error(e);
+    }
+  }
 }

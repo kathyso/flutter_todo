@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_todo/blocs/posts/posts_bloc.dart';
 import 'package:flutter_todo/models/post.dart';
+import 'package:flutter_todo/ui/posts/create_post_screen.dart';
 import 'package:flutter_todo/ui/posts/post_detail_screen.dart';
 
 class PostsScreen extends StatelessWidget {
@@ -35,7 +36,7 @@ class PostsWidget extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // TODO: create post
+          _routeToCreatePostScreen(context);
         },
         tooltip: 'Increment',
         child: const Icon(Icons.add),
@@ -70,7 +71,9 @@ class PostsWidget extends StatelessWidget {
         ],
       ),
       onTap: () {
-        _routeToPostDetailScreen(context, postId: post.id);
+        if (post.id != null) {
+          _routeToPostDetailScreen(context, postId: post.id!);
+        }
       },
     );
   }
@@ -80,6 +83,17 @@ class PostsWidget extends StatelessWidget {
       context,
       MaterialPageRoute(builder: (context) {
         return PostDetailScreen(postId: postId);
+      }),
+    );
+  }
+
+  void _routeToCreatePostScreen(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        fullscreenDialog: true,
+        builder: (context) {
+        return const CreatePostScreen();
       }),
     );
   }

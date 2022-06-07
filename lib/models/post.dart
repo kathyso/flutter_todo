@@ -5,7 +5,7 @@ part 'post.g.dart';
 @JsonSerializable(ignoreUnannotated: true)
 class Post {
   @JsonKey(name: "id")
-  final int id;
+  final int? id;
 
   @JsonKey(name: "userId")
   final int userId;
@@ -17,7 +17,7 @@ class Post {
   final String? body;
 
   Post({
-    required this.id,
+    this.id,
     required this.userId,
     required this.title,
     this.body,

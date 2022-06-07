@@ -24,7 +24,7 @@ class PostDetailWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Post Detail'),
+          title: const Text('Post Detail'),
         ),
         body: BlocBuilder<PostDetailBloc, PostDetailState>(
           builder: (context, state) {
