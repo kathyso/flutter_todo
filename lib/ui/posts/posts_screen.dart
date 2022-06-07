@@ -27,7 +27,7 @@ class PostsWidget extends StatelessWidget {
             return _buildContent(context, posts: state.posts);
           }
           // TODO: error handling
-          return CircularProgressIndicator();
+          return const Center(child: CircularProgressIndicator());
         },
       ),
       floatingActionButton: FloatingActionButton(
@@ -41,10 +41,30 @@ class PostsWidget extends StatelessWidget {
   }
 
   Widget _buildContent(BuildContext context, {required List<Post> posts}) {
-    return ListView.builder(
-        itemCount: posts.length,
-        itemBuilder: (context, index) {
-          return Text('item $index');
-        });
+    return ListView.separated(
+      itemCount: posts.length,
+      itemBuilder: (context, index) {
+        return _buildItem(context, post: posts[index]);
+      },
+      separatorBuilder: (context, index) {
+        return const Divider();
+      },
+    );
+  }
+
+  Widget _buildItem(BuildContext context, {required Post post}) {
+    return ListTile(
+      title: Text(post.title),
+      subtitle: Text(
+        post.body ?? '', // show empty string if post.body is null
+        maxLines: 2,
+      ),
+      trailing: Column(
+        mainAxisAlignment: MainAxisAlignment.center, // For vertical center the arrow icon
+        children: const [
+          Icon(Icons.arrow_forward_ios),
+        ],
+      ),
+    );
   }
 }

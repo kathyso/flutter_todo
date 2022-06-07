@@ -14,8 +14,8 @@ class PostClient {
     return ApiManager();
   }
 
-  Future<List<Post>> fetchPosts() async {
-    final url = '$_baseUrl/posts';
+  Future<List<Post>> fetchPosts({required int userId}) async {
+    final url = '$_baseUrl/posts?userId=$userId';
 
     try {
       final response = await _api.request(HttpMethod.get, url);

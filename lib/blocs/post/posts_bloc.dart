@@ -18,7 +18,8 @@ class PostsBloc extends Bloc<PostsEvent, PostsState> {
   void _onPostsInitialized(
       PostsInitialized event, Emitter<PostsState> emit) async {
     try {
-      final posts = await _postRepository.fetchPosts();
+      // fetch all posts of userId 
+      final posts = await _postRepository.fetchPosts(userId: 1);
       emit(PostsLoadSuccess(posts: posts));
     } catch (e) {
       emit(PostsLoadFailure());
