@@ -38,7 +38,7 @@ class PostsWidget extends StatelessWidget {
         onPressed: () {
           _routeToCreatePostScreen(context);
         },
-        tooltip: 'Increment',
+        tooltip: 'Create post',
         child: const Icon(Icons.add),
       ),
     );
