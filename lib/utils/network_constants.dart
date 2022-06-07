@@ -1,5 +1,5 @@
 class NetworkConstants {
   NetworkConstants._();
 
-  static const BASE_URL = 'https://jsonplaceholder.typicode.com';
+  static const baseUrl = 'https://jsonplaceholder.typicode.com';
 }

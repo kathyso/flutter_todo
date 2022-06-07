@@ -7,7 +7,7 @@ import 'package:flutter_todo/utils/network_constants.dart';
 
 class PostClient {
   static String get _baseUrl {
-    return NetworkConstants.BASE_URL;
+    return NetworkConstants.baseUrl;
   }
 
   static ApiManager get _api {
