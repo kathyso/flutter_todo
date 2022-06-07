@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-enum NavigationBarItem { home, posts }
+enum NavigationBarItem { home, posts, todos }
 
 extension NavigationBarItemExtension on NavigationBarItem {
   String get name {
@@ -9,6 +9,8 @@ extension NavigationBarItemExtension on NavigationBarItem {
         return 'Home';
       case NavigationBarItem.posts:
         return 'Posts';
+      case NavigationBarItem.todos:
+        return 'Todos';
     }
   }
 
@@ -18,6 +20,8 @@ extension NavigationBarItemExtension on NavigationBarItem {
         return Icons.home;
       case NavigationBarItem.posts:
         return Icons.newspaper;
+      case NavigationBarItem.todos:
+        return Icons.check_box;
     }
   }
 }
