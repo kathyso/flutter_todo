@@ -1,16 +1,16 @@
 import 'package:flutter_todo/models/todo.dart';
 import 'package:flutter_todo/network/client/todo_client.dart';
 
-class PostRepository {
+class TodoRepository {
   final TodoClient _client;
 
-  static final PostRepository _instance = PostRepository._(TodoClient());
+  static final TodoRepository _instance = TodoRepository._(TodoClient());
 
-  factory PostRepository() {
+  factory TodoRepository() {
     return _instance;
   }
 
-  PostRepository._(this._client);
+  TodoRepository._(this._client);
 
   Future<List<Todo>> fetchTodoList({required int userId}) async {
     try {
