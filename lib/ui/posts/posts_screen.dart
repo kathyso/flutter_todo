@@ -27,7 +27,7 @@ class PostsWidget extends StatelessWidget {
         builder: (context, state) {
           if (state is PostsLoadSuccess) {
             return _buildContent(context, posts: state.posts);
-          } else if (state is PostsLoadSuccess) {
+          } else if (state is PostsLoadFailure) {
             // should show some error message
             return const Center(child: CircularProgressIndicator());
           }
