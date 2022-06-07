@@ -19,12 +19,10 @@ class PostClient {
 
     try {
       final response = await _api.request(HttpMethod.get, url);
-      final decoded = jsonDecode(response.body);
-
-      final post =
-          (decoded as List).map((data) => Post.fromJson(data)).toList();
-
-      return post;
+      final posts = (response.data as List).map((data) {
+        return Post.fromJson(data);
+      }).toList();
+      return posts;
     } catch (e) {
       rethrow;
     }

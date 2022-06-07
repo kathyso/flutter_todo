@@ -12,7 +12,7 @@ class ApiManager {
   static final ApiManager _instance = ApiManager._();
   static const maxRetry = 3;
 
-  Future<dynamic> request(
+  Future<Response<dynamic>> request(
     HttpMethod method,
     String url, {
     dynamic data,
