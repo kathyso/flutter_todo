@@ -20,4 +20,13 @@ class PostRepository {
       return Future.error(e);
     }
   }
+
+  Future<Post> fetchPostDetail({required int postId}) async {
+    try {
+      final result = await _client.fetchPostDetail(postId: postId);
+      return result;
+    } catch (e) {
+      return Future.error(e);
+    }
+  }
 }

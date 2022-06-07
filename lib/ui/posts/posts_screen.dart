@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_todo/blocs/post/posts_bloc.dart';
+import 'package:flutter_todo/blocs/posts/posts_bloc.dart';
 import 'package:flutter_todo/models/post.dart';
+import 'package:flutter_todo/ui/posts/post_detail_screen.dart';
 
 class PostsScreen extends StatelessWidget {
   const PostsScreen({Key? key}) : super(key: key);
@@ -25,8 +26,10 @@ class PostsWidget extends StatelessWidget {
         builder: (context, state) {
           if (state is PostsLoadSuccess) {
             return _buildContent(context, posts: state.posts);
+          } else if (state is PostsLoadSuccess) {
+            // should show some error message
+            return const Center(child: CircularProgressIndicator());
           }
-          // TODO: error handling
           return const Center(child: CircularProgressIndicator());
         },
       ),
@@ -60,11 +63,24 @@ class PostsWidget extends StatelessWidget {
         maxLines: 2,
       ),
       trailing: Column(
-        mainAxisAlignment: MainAxisAlignment.center, // For vertical center the arrow icon
+        mainAxisAlignment:
+            MainAxisAlignment.center, // For vertical center the arrow icon
         children: const [
           Icon(Icons.arrow_forward_ios),
         ],
       ),
+      onTap: () {
+        _routeToPostDetailScreen(context, postId: post.id);
+      },
+    );
+  }
+
+  void _routeToPostDetailScreen(BuildContext context, {required int postId}) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) {
+        return PostDetailScreen(postId: postId);
+      }),
     );
   }
 }

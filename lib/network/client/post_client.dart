@@ -27,4 +27,16 @@ class PostClient {
       rethrow;
     }
   }
+
+  Future<Post> fetchPostDetail({required int postId}) async {
+    final url = '$_baseUrl/posts/$postId';
+
+    try {
+      final response = await _api.request(HttpMethod.get, url);
+      final post = Post.fromJson(response.data);
+      return post;
+    } catch (e) {
+      rethrow;
+    }
+  }
 }
